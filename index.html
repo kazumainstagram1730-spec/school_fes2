@@ -19,95 +19,58 @@
         <!-- =========================
              タイトル
         ========================== -->
-
         <h1>🎰 FESTIVAL SLOT</h1>
 
 
         <!-- =========================
-             コイン・BET
+             スロット ＋ 右側コントロール
         ========================== -->
-
-        <section class="info">
-
-            <div class="infoBox">
-                <span>COINS</span>
-                <strong id="coins">50</strong>
-            </div>
-
-            <div class="infoBox">
-                <span>BET</span>
-                <strong id="bet">3</strong>
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             スロット＋SPIN
-        ========================== -->
-
         <section class="slotArea">
 
             <!-- スロット本体 -->
-
             <div class="slotMachine">
 
                 <div class="reels">
 
                     <!-- 1列目 -->
                     <div class="reelColumn">
-
                         <div class="reel" id="reel1-1">🍒</div>
                         <div class="reel" id="reel1-2">🍋</div>
                         <div class="reel" id="reel1-3">🔔</div>
-
                     </div>
-
 
                     <!-- 2列目 -->
                     <div class="reelColumn">
-
                         <div class="reel" id="reel2-1">🍋</div>
                         <div class="reel" id="reel2-2">⭐</div>
                         <div class="reel" id="reel2-3">🍒</div>
-
                     </div>
-
 
                     <!-- 3列目 -->
                     <div class="reelColumn">
-
                         <div class="reel" id="reel3-1">🔔</div>
                         <div class="reel" id="reel3-2">🍒</div>
                         <div class="reel" id="reel3-3">⭐</div>
-
                     </div>
-
 
                     <!-- 4列目 -->
                     <div class="reelColumn">
-
                         <div class="reel" id="reel4-1">⭐</div>
                         <div class="reel" id="reel4-2">🍋</div>
                         <div class="reel" id="reel4-3">🔔</div>
-
                     </div>
-
 
                     <!-- 5列目 -->
                     <div class="reelColumn">
-
                         <div class="reel" id="reel5-1">7️⃣</div>
                         <div class="reel" id="reel5-2">🍒</div>
                         <div class="reel" id="reel5-3">🍋</div>
-
                     </div>
 
                 </div>
 
 
-                <!-- 当たりライン -->
-
+                <!-- 当たりライン表示 -->
                 <svg
                     id="paylineLayer"
                     class="paylineLayer">
@@ -119,29 +82,66 @@
             <!-- =========================
                  右側コントロール
             ========================== -->
-
             <div class="sideControl">
 
-                <!-- BET操作 -->
 
+                <!-- COINS -->
+                <div class="sideCoins">
+
+                    <span>COINS</span>
+
+                    <!-- JSが使うCOINS -->
+                    <strong id="coins">50</strong>
+
+                </div>
+
+
+                <!-- BET -->
                 <section class="betControls">
 
-                    <button id="betMinus">−</button>
+                    <button
+                        id="betMinus"
+                        type="button">
+                        −
+                    </button>
+
 
                     <div>
+
                         BET
-                        <strong id="betControlValue">3</strong>
+
+                        <!-- 画面に表示するBET -->
+                        <strong id="betControlValue">
+                            3
+                        </strong>
+
+                        <!--
+                            JS用のBET
+                            画面には表示しない
+                        -->
+                        <span
+                            id="bet"
+                            style="display: none;">
+                            3
+                        </span>
+
                     </div>
 
-                    <button id="betPlus">＋</button>
+
+                    <button
+                        id="betPlus"
+                        type="button">
+                        ＋
+                    </button>
 
                 </section>
 
 
                 <!-- SPIN -->
-
-                <button id="spinButton">
-                    SPIN
+                <button
+                    id="spinButton"
+                    type="button">
+                    ▶ SPIN
                 </button>
 
             </div>
@@ -150,26 +150,30 @@
 
 
         <!-- =========================
-             結果
+             結果表示
         ========================== -->
-
-        <div id="result" class="result">
+        <div
+            id="result"
+            class="result">
             SPINしてみよう！
         </div>
 
 
         <!-- =========================
-             配当表
+             PAY TABLE
         ========================== -->
-
         <section class="payout">
 
             <h2>PAY TABLE</h2>
 
             <p>🍒 ×3 → BET ×3</p>
+
             <p>🍋 ×3 → BET ×5</p>
+
             <p>🔔 ×3 → BET ×8</p>
+
             <p>⭐ ×3 → BET ×15</p>
+
             <p>7️⃣ ×3 → BET ×30</p>
 
             <small>
@@ -181,6 +185,9 @@
     </main>
 
 
+    <!-- =========================
+         JavaScript
+    ========================== -->
     <script src="script.js"></script>
 
 </body>
