@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+          content="width=device-width, initial-scale=1.0">
 
     <title>Festival Slot</title>
 
@@ -43,58 +43,108 @@
 
 
         <!-- =========================
-             スロット
+             スロット＋SPIN
         ========================== -->
 
-        <section class="slotMachine">
+        <section class="slotArea">
 
-            <div class="reels">
+            <!-- スロット本体 -->
 
-                <!-- 1列目 -->
-                <div class="reelColumn">
-                    <div class="reel" id="reel1-1">🍒</div>
-                    <div class="reel" id="reel1-2">🍋</div>
-                    <div class="reel" id="reel1-3">🔔</div>
+            <div class="slotMachine">
+
+                <div class="reels">
+
+                    <!-- 1列目 -->
+                    <div class="reelColumn">
+
+                        <div class="reel" id="reel1-1">🍒</div>
+                        <div class="reel" id="reel1-2">🍋</div>
+                        <div class="reel" id="reel1-3">🔔</div>
+
+                    </div>
+
+
+                    <!-- 2列目 -->
+                    <div class="reelColumn">
+
+                        <div class="reel" id="reel2-1">🍋</div>
+                        <div class="reel" id="reel2-2">⭐</div>
+                        <div class="reel" id="reel2-3">🍒</div>
+
+                    </div>
+
+
+                    <!-- 3列目 -->
+                    <div class="reelColumn">
+
+                        <div class="reel" id="reel3-1">🔔</div>
+                        <div class="reel" id="reel3-2">🍒</div>
+                        <div class="reel" id="reel3-3">⭐</div>
+
+                    </div>
+
+
+                    <!-- 4列目 -->
+                    <div class="reelColumn">
+
+                        <div class="reel" id="reel4-1">⭐</div>
+                        <div class="reel" id="reel4-2">🍋</div>
+                        <div class="reel" id="reel4-3">🔔</div>
+
+                    </div>
+
+
+                    <!-- 5列目 -->
+                    <div class="reelColumn">
+
+                        <div class="reel" id="reel5-1">7️⃣</div>
+                        <div class="reel" id="reel5-2">🍒</div>
+                        <div class="reel" id="reel5-3">🍋</div>
+
+                    </div>
+
                 </div>
 
-                <!-- 2列目 -->
-                <div class="reelColumn">
-                    <div class="reel" id="reel2-1">🍋</div>
-                    <div class="reel" id="reel2-2">⭐</div>
-                    <div class="reel" id="reel2-3">🍒</div>
-                </div>
 
-                <!-- 3列目 -->
-                <div class="reelColumn">
-                    <div class="reel" id="reel3-1">🔔</div>
-                    <div class="reel" id="reel3-2">🍒</div>
-                    <div class="reel" id="reel3-3">⭐</div>
-                </div>
+                <!-- 当たりライン -->
 
-                <!-- 4列目 -->
-                <div class="reelColumn">
-                    <div class="reel" id="reel4-1">⭐</div>
-                    <div class="reel" id="reel4-2">🍋</div>
-                    <div class="reel" id="reel4-3">🔔</div>
-                </div>
-
-                <!-- 5列目 -->
-                <div class="reelColumn">
-                    <div class="reel" id="reel5-1">7️⃣</div>
-                    <div class="reel" id="reel5-2">🍒</div>
-                    <div class="reel" id="reel5-3">🍋</div>
-                </div>
+                <svg
+                    id="paylineLayer"
+                    class="paylineLayer">
+                </svg>
 
             </div>
 
 
-            <!--
-                当たりラインをここに描画
-            -->
-            <svg
-                id="paylineLayer"
-                class="paylineLayer">
-            </svg>
+            <!-- =========================
+                 右側コントロール
+            ========================== -->
+
+            <div class="sideControl">
+
+                <!-- BET操作 -->
+
+                <section class="betControls">
+
+                    <button id="betMinus">−</button>
+
+                    <div>
+                        BET
+                        <strong id="betControlValue">3</strong>
+                    </div>
+
+                    <button id="betPlus">＋</button>
+
+                </section>
+
+
+                <!-- SPIN -->
+
+                <button id="spinButton">
+                    SPIN
+                </button>
+
+            </div>
 
         </section>
 
@@ -106,33 +156,6 @@
         <div id="result" class="result">
             SPINしてみよう！
         </div>
-
-
-        <!-- =========================
-             BET操作
-        ========================== -->
-
-        <section class="betControls">
-
-            <button id="betMinus">−</button>
-
-            <div>
-                BET
-                <strong id="betControlValue">3</strong>
-            </div>
-
-            <button id="betPlus">＋</button>
-
-        </section>
-
-
-        <!-- =========================
-             SPIN
-        ========================== -->
-
-        <button id="spinButton">
-            SPIN
-        </button>
 
 
         <!-- =========================
@@ -157,7 +180,9 @@
 
     </main>
 
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
