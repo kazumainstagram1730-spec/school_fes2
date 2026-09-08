@@ -34,7 +34,7 @@ const payouts = {
 // ==========================
 
 let coins = 25;
-let bet = 3;
+let bet = 1;
 let spinning = false;
 
 
