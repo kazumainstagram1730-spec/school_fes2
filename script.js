@@ -21,11 +21,11 @@ const symbolWeights = {
 
 
 const payouts = {
-    "🍒": 3,
-    "🍋": 5,
-    "🔔": 8,
-    "⭐": 15,
-    "7️⃣": 30
+    "🍒": 1,
+    "🍋": 2,
+    "🔔": 3,
+    "⭐": 10,
+    "7️⃣": 25
 };
 
 
@@ -33,7 +33,7 @@ const payouts = {
 // ゲーム状態
 // ==========================
 
-let coins = 25;
+let coins = 20;
 let bet = 1;
 let spinning = false;
 
