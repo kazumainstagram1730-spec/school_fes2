@@ -5,7 +5,7 @@
 const symbols = [
     "💀",
     "🎩",
-    "🪎",
+    "🪙",
     "🃏",
     "👑"
 ];
@@ -18,7 +18,7 @@ const symbols = [
 const symbolWeights = {
     "💀": 50,
     "🎩": 25,
-    "🪎": 15,
+    "🪙": 15,
     "🃏": 8,
     "👑": 2
 };
@@ -31,7 +31,7 @@ const symbolWeights = {
 const payouts = {
     "💀": 0.5,
     "🎩": 1,
-    "🪎": 2,
+    "🪙": 2,
     "🃏": 10,
     "👑": 25
 };
