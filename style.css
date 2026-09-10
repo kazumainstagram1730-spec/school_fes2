@@ -1342,3 +1342,43 @@ body {
         opacity: 0.9;
     }
 }
+/* =========================
+   横向きスマホ専用
+   ========================= */
+
+@media (orientation: landscape) and (max-width: 900px) {
+
+    .game {
+        width: 100vw;
+        height: 100vh;
+        padding: 10px;
+    }
+
+    .slotArea {
+        width: 100%;
+        height: auto;
+    }
+
+    .slotMachine {
+        width: 75vw;
+        max-width: none;
+    }
+
+    .reel {
+        font-size: 7vw;
+    }
+
+    .sideControl {
+        width: 20vw;
+    }
+
+    #spinButton {
+        min-height: 60px;
+        font-size: 20px;
+    }
+
+    .result {
+        font-size: 20px;
+        min-height: 45px;
+    }
+}
