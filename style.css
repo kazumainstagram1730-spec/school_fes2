@@ -1227,3 +1227,25 @@ spinButton {
     }
 
 }
+.gameClear {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffd700;
+
+    text-shadow:
+        0 0 5px #fff,
+        0 0 15px #ffd700,
+        0 0 30px #ff9800;
+
+    animation: clearFlash 0.8s infinite alternate;
+}
+
+@keyframes clearFlash {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}

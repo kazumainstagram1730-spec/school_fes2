@@ -11,19 +11,27 @@ const symbols = [
 ];
 
 
+// ==========================
+// シンボル出現率
+// ==========================
+
 const symbolWeights = {
-    "🍒": 35,
-    "🍋": 30,
-    "🔔": 20,
-    "⭐": 10,
-    "7️⃣": 5
+    "🍒": 50,
+    "🍋": 25,
+    "🔔": 15,
+    "⭐": 8,
+    "7️⃣": 2
 };
 
 
+// ==========================
+// 配当
+// ==========================
+
 const payouts = {
-    "🍒": 1,
-    "🍋": 2,
-    "🔔": 3,
+    "🍒": 0.5,
+    "🍋": 1,
+    "🔔": 2,
     "⭐": 10,
     "7️⃣": 25
 };
@@ -33,9 +41,10 @@ const payouts = {
 // ゲーム状態
 // ==========================
 
-let coins = 20;
+let coins = 10;
 let bet = 1;
 let spinning = false;
+let gameClear = false;
 
 
 // ==========================
@@ -93,7 +102,11 @@ const paylineLayer =
 function updateDisplay() {
 
     coinsDisplay.textContent = coins;
-    betDisplay.textContent = bet;
+
+    if (betDisplay) {
+        betDisplay.textContent = bet;
+    }
+
     betControlValue.textContent = bet;
 }
 
@@ -134,7 +147,9 @@ function randomSymbol() {
 
 betMinus.addEventListener("click", () => {
 
-    if (spinning) return;
+    if (spinning || gameClear) {
+        return;
+    }
 
     if (bet > 1) {
 
@@ -151,9 +166,12 @@ betMinus.addEventListener("click", () => {
 
 betPlus.addEventListener("click", () => {
 
-    if (spinning) return;
+    if (spinning || gameClear) {
+        return;
+    }
 
-    if (bet < coins) {
+    // 最大BETは5
+    if (bet < 5) {
 
         bet++;
 
@@ -166,14 +184,24 @@ betPlus.addEventListener("click", () => {
 // SPIN
 // ==========================
 
-spinButton.addEventListener("click", spin);
+spinButton.addEventListener(
+    "click",
+    spin
+);
 
+
+// ==========================
+// SPIN処理
+// ==========================
 
 function spin() {
 
-    if (spinning) return;
+    if (spinning || gameClear) {
+        return;
+    }
 
 
+    // コイン不足
     if (coins < bet) {
 
         resultDisplay.textContent =
@@ -188,7 +216,10 @@ function spin() {
     spinButton.disabled = true;
 
 
+    // ========================
     // BET消費
+    // ========================
+
     coins -= bet;
 
     updateDisplay();
@@ -286,7 +317,9 @@ function spin() {
 
         spinning = false;
 
-        spinButton.disabled = false;
+        if (!gameClear) {
+            spinButton.disabled = false;
+        }
 
     }, 1200 + 5 * 500 + 400);
 }
@@ -369,7 +402,6 @@ function findWinningLines() {
                     symbol: symbol,
 
                     count: count
-
                 });
             }
 
@@ -414,7 +446,6 @@ function findWinningLines() {
                 symbol: top,
 
                 count: 3
-
             });
         }
     }
@@ -425,11 +456,18 @@ function findWinningLines() {
     // ==================================================
 
     // 左上 → 右下
-    for (let startCol = 0; startCol <= 2; startCol++) {
+    for (
+        let startCol = 0;
+        startCol <= 2;
+        startCol++
+    ) {
 
         const positions = [
+
             [startCol, 0],
+
             [startCol + 1, 1],
+
             [startCol + 2, 2]
         ];
 
@@ -477,11 +515,18 @@ function findWinningLines() {
     // ==================================================
 
     // 左下 → 右上
-    for (let startCol = 0; startCol <= 2; startCol++) {
+    for (
+        let startCol = 0;
+        startCol <= 2;
+        startCol++
+    ) {
 
         const positions = [
+
             [startCol, 2],
+
             [startCol + 1, 1],
+
             [startCol + 2, 0]
         ];
 
@@ -597,6 +642,40 @@ function finishSpin() {
 
 
     // ========================
+    // GAME CLEAR
+    // ========================
+
+    if (coins >= 50) {
+
+        coins = 50;
+
+        updateDisplay();
+
+
+        gameClear = true;
+
+
+        resultDisplay.textContent =
+            "🎉 GAME CLEAR! 🎉";
+
+
+        resultDisplay.classList.add(
+            "gameClear"
+        );
+
+
+        spinButton.disabled = true;
+
+        betMinus.disabled = true;
+
+        betPlus.disabled = true;
+
+
+        return;
+    }
+
+
+    // ========================
     // GAME OVER
     // ========================
 
@@ -604,6 +683,12 @@ function finishSpin() {
 
         resultDisplay.textContent =
             "GAME OVER 😭";
+
+        spinButton.disabled = true;
+
+        betMinus.disabled = true;
+
+        betPlus.disabled = true;
     }
 }
 
@@ -617,12 +702,14 @@ function calculateWin(symbol, count) {
     let multiplier = 1;
 
 
+    // 4連続
     if (count === 4) {
 
         multiplier = 2;
     }
 
 
+    // 5連続
     if (count >= 5) {
 
         multiplier = 4;
@@ -673,7 +760,9 @@ function coinJump() {
 
 function drawPayline(positions) {
 
-    if (!paylineLayer) return;
+    if (!paylineLayer) {
+        return;
+    }
 
 
     const slot =
@@ -759,7 +848,9 @@ function drawPayline(positions) {
     );
 
 
-    paylineLayer.appendChild(line);
+    paylineLayer.appendChild(
+        line
+    );
 
 
     // ========================
@@ -808,7 +899,7 @@ function drawPayline(positions) {
 
 
     // ========================
-    // 削除
+    // 1.5秒後に削除
     // ========================
 
     setTimeout(() => {
@@ -825,7 +916,9 @@ function drawPayline(positions) {
 
 function clearPaylines() {
 
-    if (!paylineLayer) return;
+    if (!paylineLayer) {
+        return;
+    }
 
     paylineLayer.innerHTML = "";
 }
