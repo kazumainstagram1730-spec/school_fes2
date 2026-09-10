@@ -1,12 +1,19 @@
-/* =========================================
+/* =========================================================
    FESTIVAL SLOT
-   Casino Style CSS
-========================================= */
+   Luxury Casino Style
+   ========================================================= */
 
 
-/* =========================================
+/* =========================================================
+   Google Fonts
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600;700;800&family=Montserrat:wght@500;600;700;800&display=swap');
+
+
+/* =========================================================
    RESET
-========================================= */
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -21,416 +28,286 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    BODY
-========================================= */
+   ========================================================= */
 
 body {
     min-height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* あなたが送ってくれた背景画像 */
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.42),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url("bg.jpg");
 
-    font-family: Arial, Helvetica, sans-serif;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
-    color: #ffffff;
+    color: white;
+
+    font-family: "Montserrat", Arial, sans-serif;
 
     overflow-x: hidden;
-
-    position: relative;
-
-    /* 高級カジノ風の背景 */
-    background:
-        radial-gradient(
-            ellipse at 50% 20%,
-            rgba(190, 150, 55, 0.18) 0%,
-            rgba(190, 150, 55, 0.05) 25%,
-            transparent 55%
-        ),
-
-        radial-gradient(
-            ellipse at 0% 50%,
-            rgba(12, 92, 61, 0.35) 0%,
-            transparent 55%
-        ),
-
-        radial-gradient(
-            ellipse at 100% 50%,
-            rgba(12, 92, 61, 0.35) 0%,
-            transparent 55%
-        ),
-
-        linear-gradient(
-            135deg,
-            #010605 0%,
-            #04140f 25%,
-            #09261c 50%,
-            #04140f 75%,
-            #010605 100%
-        );
 }
 
 
-/* =========================================
-   BACKGROUND DECORATION
-========================================= */
-
-body::before {
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            transparent 0px,
-            transparent 60px,
-            rgba(255, 215, 100, 0.025) 61px,
-            transparent 62px
-        ),
-
-        repeating-linear-gradient(
-            0deg,
-            transparent 0px,
-            transparent 60px,
-            rgba(255, 215, 100, 0.018) 61px,
-            transparent 62px
-        );
-
-    z-index: 0;
-}
-
-
-/* =========================================
-   BOTTOM LIGHT
-========================================= */
-
-body::after {
-    content: "";
-
-    position: fixed;
-
-    left: 50%;
-    bottom: -25vh;
-
-    width: 100vw;
-    height: 50vh;
-
-    transform: translateX(-50%);
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(205, 165, 65, 0.13),
-            transparent 65%
-        );
-
-    filter: blur(25px);
-
-    z-index: 0;
-}
-
-
-/* =========================================
-   GAME
-========================================= */
+/* =========================================================
+   GAME CONTAINER
+   ========================================================= */
 
 .game {
     position: relative;
-
     z-index: 1;
 
-    width: min(1100px, 96vw);
+    width: min(1120px, 94vw);
+
+    margin: 20px auto;
+    padding: 20px 24px 24px;
 
     text-align: center;
 
-    padding: 10px;
+    background:
+        linear-gradient(
+            rgba(5, 8, 7, 0.72),
+            rgba(2, 5, 4, 0.82)
+        );
+
+    border: 2px solid rgba(212, 175, 55, 0.65);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.85),
+        inset 0 0 35px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(212, 175, 55, 0.12);
 }
 
 
-/* =========================================
+/* =========================================================
    TITLE
-========================================= */
+   ========================================================= */
 
-h1 {
-    margin: 5px 0 18px;
+.game h1 {
+    margin: 0 0 18px;
 
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Cinzel", Georgia, serif;
 
-    font-size: clamp(30px, 5vw, 58px);
+    font-size: clamp(32px, 5vw, 58px);
 
-    font-weight: bold;
+    font-weight: 800;
 
-    letter-spacing: 4px;
+    letter-spacing: 5px;
 
     color: #f5d36b;
 
     text-shadow:
-        0 2px 0 #7b5815,
-        0 4px 12px rgba(0, 0, 0, 0.9),
-        0 0 18px rgba(245, 211, 107, 0.25);
+        0 2px 0 #5c3b00,
+        0 4px 8px rgba(0, 0, 0, 0.95),
+        0 0 12px rgba(245, 211, 107, 0.35);
+
+    line-height: 1;
 }
 
 
-/* =========================================
-   COINS / BET INFORMATION
-========================================= */
-
-.info {
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 18px;
-}
-
-
-.infoBox {
-    min-width: 145px;
-
-    padding: 9px 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #1d332a,
-            #0b1813
-        );
-
-    border: 2px solid #c9a84e;
-
-    border-radius: 8px;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.15),
-        inset 0 -8px 15px rgba(0,0,0,0.25),
-        0 5px 15px rgba(0,0,0,0.55);
-}
-
-
-.infoTitle {
-    margin-bottom: 2px;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    color: #d8bd69;
-}
-
-
-.infoValue {
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 24px;
-
-    font-weight: bold;
-
-    color: #fff4bd;
-
-    text-shadow:
-        0 0 7px rgba(255, 230, 140, 0.25);
-}
-
-
-/* =========================================
+/* =========================================================
    SLOT AREA
-========================================= */
+   ========================================================= */
 
 .slotArea {
+    width: 100%;
+
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
-    gap: 25px;
-
-    width: 100%;
-
-    margin: 0 auto;
+    gap: 18px;
 }
 
 
-/* =========================================
+/* =========================================================
    SLOT MACHINE
-========================================= */
+   ========================================================= */
 
 .slotMachine {
     position: relative;
 
     width: min(760px, 78vw);
 
-    padding: 24px;
+    padding: 16px;
 
     background:
         linear-gradient(
             145deg,
-            #303030 0%,
-            #161616 35%,
-            #090909 50%,
-            #1c1c1c 70%,
-            #303030 100%
+            #252525 0%,
+            #090909 30%,
+            #1a1a1a 65%,
+            #050505 100%
         );
 
-    border: 7px solid #c49a3a;
+    border: 4px solid #d4af37;
 
     border-radius: 18px;
 
     box-shadow:
-
-        /* 金色の外側 */
-        0 0 0 2px #604915,
-
-        /* 本体の影 */
-        0 12px 30px rgba(0,0,0,0.85),
-
-        /* 内側 */
-        inset 0 0 0 3px #594317,
-
-        inset 0 0 25px rgba(0,0,0,0.9);
+        0 7px 0 #5a4000,
+        0 12px 25px rgba(0, 0, 0, 0.9),
+        inset 0 0 15px rgba(255, 255, 255, 0.06),
+        inset 0 0 35px rgba(0, 0, 0, 0.95);
 }
 
 
-/* 上部の金属っぽい光 */
+/* =========================================================
+   GOLD INNER FRAME
+   ========================================================= */
 
 .slotMachine::before {
     content: "";
 
     position: absolute;
 
-    top: 4px;
-    left: 10%;
+    inset: 7px;
 
-    width: 80%;
-    height: 2px;
+    border: 1px solid rgba(255, 220, 100, 0.35);
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,235,160,0.7),
-            transparent
-        );
+    border-radius: 12px;
 
     pointer-events: none;
+
+    z-index: 5;
 }
 
 
-/* =========================================
-   REELS
-========================================= */
+/* =========================================================
+   REELS AREA
+   ========================================================= */
 
 .reels {
+    position: relative;
+
     display: grid;
 
     grid-template-columns:
         repeat(5, 1fr);
 
-    gap: 8px;
+    gap: 7px;
 
-    padding: 10px;
+    width: 100%;
+
+    padding: 8px;
 
     background:
         linear-gradient(
-            #050505,
-            #111,
-            #030303
+            180deg,
+            #111 0%,
+            #050505 50%,
+            #151515 100%
         );
 
-    border: 2px solid #333;
+    border: 2px solid #8d6b1f;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
     box-shadow:
-        inset 0 0 20px #000,
-        0 2px 5px rgba(0,0,0,0.8);
+        inset 0 0 20px rgba(0, 0, 0, 0.95);
 }
 
 
-/* =========================================
+/* =========================================================
    REEL COLUMN
-========================================= */
+   ========================================================= */
 
 .reelColumn {
     display: flex;
 
     flex-direction: column;
 
-    gap: 8px;
+    gap: 6px;
+
+    min-width: 0;
 }
 
 
-/* =========================================
-   REEL
-========================================= */
+/* =========================================================
+   INDIVIDUAL REEL
+   ========================================================= */
 
 .reel {
-    aspect-ratio: 1 / 1;
+    position: relative;
 
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
-    overflow: hidden;
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    min-height: 0;
 
     background:
-        linear-gradient(
-            145deg,
+        radial-gradient(
+            circle at 50% 35%,
             #ffffff 0%,
-            #eeeeee 30%,
-            #cccccc 65%,
-            #9b9b9b 100%
+            #f2f2f2 40%,
+            #cfcfcf 75%,
+            #929292 100%
         );
 
-    border-radius: 5px;
+    border: 2px solid #d4af37;
 
-    font-size: clamp(30px, 5vw, 55px);
+    border-radius: 8px;
 
     color: #111;
 
-    box-shadow:
-        inset 0 2px 2px rgba(255,255,255,0.9),
-        inset 0 -4px 6px rgba(0,0,0,0.35),
-        0 2px 5px rgba(0,0,0,0.75);
+    font-size: clamp(32px, 5vw, 65px);
 
-    transition:
-        transform 0.08s,
-        filter 0.08s;
+    line-height: 1;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 0 10px rgba(0, 0, 0, 0.45),
+        0 2px 5px rgba(0, 0, 0, 0.8);
 }
 
 
-/* =========================================
-   SPINNING
-========================================= */
+/* =========================================================
+   REEL HIGHLIGHT
+   ========================================================= */
 
-.reel.spinning {
-    filter: blur(2px);
+.reel::after {
+    content: "";
 
-    transform: translateY(5px);
+    position: absolute;
 
-    box-shadow:
-        inset 0 0 15px rgba(0,0,0,0.55),
-        0 0 5px rgba(255,255,255,0.15);
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 35%;
+
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0)
+        );
+
+    pointer-events: none;
 }
 
 
-/* =========================================
+/* =========================================================
    PAYLINE SVG
-========================================= */
+   ========================================================= */
 
 .paylineLayer {
     position: absolute;
@@ -442,47 +319,48 @@ h1 {
 
     pointer-events: none;
 
-    overflow: visible;
-
     z-index: 10;
+
+    overflow: visible;
 }
 
+
+/* =========================================================
+   PAYLINE STYLE
+   ========================================================= */
 
 .paylineLayer polyline {
     fill: none;
 
-    stroke: #ffe27a;
+    stroke: #ffd700;
 
-    stroke-width: 7;
+    stroke-width: 5;
 
     stroke-linecap: round;
-
     stroke-linejoin: round;
 
     filter:
-        drop-shadow(0 0 4px #ffffff)
-        drop-shadow(0 0 9px #e1b83c);
+        drop-shadow(0 0 4px #fff)
+        drop-shadow(0 0 8px #ffd700);
 
-    stroke-dasharray: 1000;
-
-    stroke-dashoffset: 1000;
-
-    animation:
-        lineShoot 0.5s ease forwards;
+    animation: paylineFlash 0.7s ease-in-out infinite alternate;
 }
 
 
-@keyframes lineShoot {
+@keyframes paylineFlash {
+    from {
+        opacity: 0.65;
+    }
 
     to {
-        stroke-dashoffset: 0;
+        opacity: 1;
     }
 }
 
 
-/* =========================================
+/* =========================================================
    SIDE CONTROL
-========================================= */
+   ========================================================= */
 
 .sideControl {
     display: flex;
@@ -490,434 +368,523 @@ h1 {
     flex-direction: column;
 
     justify-content: center;
-
     align-items: center;
 
-    gap: 18px;
+    gap: 10px;
 
-    min-width: 150px;
+    flex-shrink: 0;
 }
 
 
-/* =========================================
-   BET BOX
-========================================= */
+/* =========================================================
+   COINS BOX
+   ========================================================= */
 
-.betBox {
-    padding: 11px 16px;
+.sideCoins {
+    width: 120px;
+
+    padding: 9px 8px;
 
     background:
         linear-gradient(
-            145deg,
-            #292929,
-            #111111
+            180deg,
+            #173e2f 0%,
+            #0c241a 50%,
+            #06120d 100%
         );
 
-    border: 2px solid #c49a3a;
+    border: 3px solid #d4af37;
 
     border-radius: 10px;
 
     box-shadow:
-        inset 0 1px rgba(255,255,255,0.12),
-        0 6px 15px rgba(0,0,0,0.65);
+        0 4px 8px rgba(0, 0, 0, 0.7),
+        inset 0 0 10px rgba(0, 0, 0, 0.8),
+        0 0 8px rgba(212, 175, 55, 0.15);
+
+    text-align: center;
 }
 
 
-.betTitle {
-    margin-bottom: 7px;
+.sideCoins span {
+    display: block;
 
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Bebas Neue", sans-serif;
 
-    font-size: 13px;
+    color: #d4af37;
+
+    font-size: 15px;
 
     letter-spacing: 3px;
-
-    color: #d8b858;
 }
 
 
-/* =========================================
-   BET CONTROLS
-========================================= */
+.sideCoins strong {
+    display: block;
+
+    margin-top: 2px;
+
+    font-family: "Bebas Neue", sans-serif;
+
+    color: #fff3ae;
+
+    font-size: 32px;
+
+    line-height: 1;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 5px rgba(255, 215, 100, 0.5),
+        0 2px 3px rgba(0, 0, 0, 0.9);
+}
+
+
+/* =========================================================
+   BET CONTROL
+   ========================================================= */
 
 .betControls {
-    display: flex;
+    width: 120px;
 
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-
-.betControls button {
-    width: 35px;
-    height: 35px;
+    padding: 6px;
 
     display: flex;
 
-    justify-content: center;
-
+    justify-content: space-between;
     align-items: center;
-
-    padding: 0;
-
-    border: 1px solid #b99339;
-
-    border-radius: 50%;
 
     background:
         linear-gradient(
-            145deg,
-            #292929,
-            #0c0c0c
+            180deg,
+            #1d1d1d,
+            #090909
+        );
+
+    border: 2px solid #d4af37;
+
+    border-radius: 9px;
+
+    box-shadow:
+        inset 0 0 8px rgba(0, 0, 0, 0.9),
+        0 3px 7px rgba(0, 0, 0, 0.7);
+}
+
+
+.betControls div {
+    color: #d4af37;
+
+    font-family: "Bebas Neue", sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    line-height: 1;
+
+    text-align: center;
+}
+
+
+.betControls strong {
+    display: block;
+
+    margin-top: 3px;
+
+    color: white;
+
+    font-family: "Bebas Neue", sans-serif;
+
+    font-size: 23px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   BET + / -
+   ========================================================= */
+
+.betControls button {
+    width: 28px;
+    height: 28px;
+
+    padding: 0;
+
+    border: 1px solid #b58c27;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #3a3a3a,
+            #151515
         );
 
     color: #f5d36b;
 
-    font-size: 21px;
+    font-size: 19px;
+
+    font-weight: bold;
 
     cursor: pointer;
 
     box-shadow:
-        inset 0 1px rgba(255,255,255,0.15),
-        0 3px 6px rgba(0,0,0,0.5);
+        0 2px 3px rgba(0, 0, 0, 0.7),
+        inset 0 1px rgba(255, 255, 255, 0.12);
 
-    transition: 0.12s;
+    transition:
+        transform 0.08s,
+        background 0.1s;
 }
 
 
 .betControls button:hover {
-    background: #30260f;
-
-    transform: scale(1.05);
+    background:
+        linear-gradient(
+            180deg,
+            #555,
+            #222
+        );
 }
 
 
 .betControls button:active {
-    transform: scale(0.92);
+    transform: translateY(2px);
 }
 
 
-#betControlValue {
-    min-width: 30px;
-
-    font-size: 22px;
-
-    font-weight: bold;
-
-    color: #ffffff;
-}
-
-
-/* =========================================
+/* =========================================================
    SPIN BUTTON
-========================================= */
+   ========================================================= */
 
 #spinButton {
+    position: relative;
+
     width: 120px;
-    height: 70px;
+    height: 66px;
 
-    border-radius: 15px;
-    border: 4px solid #d4af37;
+    border: 3px solid #d4af37;
 
-    background: linear-gradient(
-        to bottom,
-        #e53935 0%,
-        #b71c1c 45%,
-        #7f0000 100%
-    );
+    border-radius: 14px;
 
-    color: #fff;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 25px;
+    background:
+        linear-gradient(
+            180deg,
+            #ff4747 0%,
+            #d51f1f 42%,
+            #a30000 70%,
+            #680000 100%
+        );
+
+    color: white;
+
+    font-family: "Bebas Neue", sans-serif;
+
+    font-size: 28px;
+
     font-weight: bold;
-    letter-spacing: 2px;
+
+    letter-spacing: 3px;
 
     text-shadow:
-        0 2px 3px rgba(0,0,0,0.8);
-
-    box-shadow:
-        0 7px 0 #4a0000,
-        0 9px 12px rgba(0,0,0,0.7),
-        inset 0 2px 3px rgba(255,255,255,0.35);
+        0 2px 3px rgba(0, 0, 0, 0.9);
 
     cursor: pointer;
 
+    box-shadow:
+        0 7px 0 #450000,
+        0 10px 13px rgba(0, 0, 0, 0.8),
+        inset 0 2px 3px rgba(255, 255, 255, 0.35);
+
     transition:
         transform 0.08s,
-        box-shadow 0.08s;
+        box-shadow 0.08s,
+        filter 0.15s;
 }
 
-/* マウスを乗せたとき */
+
 #spinButton:hover {
-    background: linear-gradient(
-        to bottom,
-        #ff4b48 0%,
-        #d32f2f 45%,
-        #9b0000 100%
-    );
+    filter: brightness(1.12);
 
     box-shadow:
-        0 7px 0 #4a0000,
-        0 10px 18px rgba(0,0,0,0.8),
-        0 0 15px rgba(255,60,60,0.5),
-        inset 0 2px 3px rgba(255,255,255,0.4);
+        0 7px 0 #450000,
+        0 12px 18px rgba(0, 0, 0, 0.85),
+        0 0 15px rgba(255, 50, 50, 0.35),
+        inset 0 2px 3px rgba(255, 255, 255, 0.4);
 }
 
-/* 押した瞬間 */
+
 #spinButton:active {
     transform: translateY(6px);
 
     box-shadow:
-        0 1px 0 #4a0000,
-        0 3px 6px rgba(0,0,0,0.7),
-        inset 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.spinButton:hover {
-    filter: brightness(1.15);
-
-    transform: scale(1.03);
+        0 1px 0 #450000,
+        0 4px 6px rgba(0, 0, 0, 0.8),
+        inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 
-.spinButton:active {
-    transform: translateY(6px);
-
-    box-shadow:
-
-        inset 0 4px 8px rgba(255,255,255,0.2),
-
-        inset 0 -5px 10px rgba(0,0,0,0.6),
-
-        0 2px 0 #5c4316;
-}
-
-
-.spinButton:disabled {
-    filter: grayscale(0.7);
-
-    opacity: 0.6;
+#spinButton:disabled {
+    opacity: 0.45;
 
     cursor: not-allowed;
+
+    filter: grayscale(0.5);
+
+    transform: none;
 }
 
 
-/* =========================================
+/* =========================================================
    RESULT
-========================================= */
+   ========================================================= */
 
-#result {
-    margin-top: 18px;
+.result {
+    min-height: 38px;
 
-    min-height: 30px;
+    margin: 13px 0 10px;
 
-    font-family: Georgia, "Times New Roman", serif;
+    display: flex;
 
-    font-size: 21px;
+    justify-content: center;
+    align-items: center;
 
-    font-weight: bold;
+    color: #fff2b0;
 
-    color: #f5d36b;
+    font-family: "Cinzel", Georgia, serif;
 
-    text-shadow:
-        0 0 8px rgba(245,211,107,0.5);
-}
+    font-size: clamp(15px, 2vw, 22px);
 
+    font-weight: 700;
 
-/* =========================================
-   COIN JUMP
-========================================= */
-
-.coinJump {
-    animation:
-        coinJump 0.45s ease;
-}
-
-spinButton {
-    width: 120px;
-    height: 70px;
-
-    border-radius: 15px;
-    border: 4px solid #d4af37;
-
-    background: linear-gradient(
-        to bottom,
-        #e53935 0%,
-        #b71c1c 45%,
-        #7f0000 100%
-    );
-
-    color: #fff;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 25px;
-    font-weight: bold;
     letter-spacing: 2px;
 
     text-shadow:
-        0 2px 3px rgba(0,0,0,0.8);
-
-    box-shadow:
-        0 7px 0 #4a0000,
-        0 9px 12px rgba(0,0,0,0.7),
-        inset 0 2px 3px rgba(255,255,255,0.35);
-
-    cursor: pointer;
-
-    transition:
-        transform 0.08s,
-        box-shadow 0.08s;
+        0 2px 5px rgba(0, 0, 0, 0.9);
 }
 
-/* マウスを乗せたとき */
-#spinButton:hover {
-    background: linear-gradient(
-        to bottom,
-        #ff4b48 0%,
-        #d32f2f 45%,
-        #9b0000 100%
-    );
 
-    box-shadow:
-        0 7px 0 #4a0000,
-        0 10px 18px rgba(0,0,0,0.8),
-        0 0 15px rgba(255,60,60,0.5),
-        inset 0 2px 3px rgba(255,255,255,0.4);
+/* =========================================================
+   COIN JUMP
+   ========================================================= */
+
+.coin-jump {
+    animation: coinJump 0.5s ease;
 }
 
-/* 押した瞬間 */
-#spinButton:active {
-    transform: translateY(6px);
-
-    box-shadow:
-        0 1px 0 #4a0000,
-        0 3px 6px rgba(0,0,0,0.7),
-        inset 0 2px 4px rgba(0,0,0,0.3);
-}
 
 @keyframes coinJump {
-
     0% {
-        transform:
-            translateY(0)
-            scale(1);
+        transform: scale(1);
     }
 
-    40% {
-        transform:
-            translateY(-15px)
-            scale(1.15);
+    35% {
+        transform: scale(1.35);
+    }
+
+    60% {
+        transform: scale(0.95);
     }
 
     100% {
-        transform:
-            translateY(0)
-            scale(1);
+        transform: scale(1);
     }
 }
 
 
-/* =========================================
-   DESKTOP
-========================================= */
+/* =========================================================
+   GAME CLEAR
+   ========================================================= */
 
-@media (min-width: 701px) {
+.gameClear {
+    color: #ffd700;
 
-    .game {
-        max-width: 1100px;
-    }
+    font-family: "Cinzel", Georgia, serif;
 
+    font-size: clamp(24px, 4vw, 42px);
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 12px #ffd700,
+        0 0 25px #ff9800;
+
+    animation:
+        clearFlash 0.8s infinite alternate;
 }
 
 
-/* =========================================
-   TABLET / SMALL PC
-========================================= */
-
-@media (max-width: 900px) {
-
-    .slotArea {
-        gap: 15px;
+@keyframes clearFlash {
+    from {
+        transform: scale(1);
     }
 
-    .slotMachine {
-        width: min(700px, 78vw);
-
-        padding: 15px;
+    to {
+        transform: scale(1.06);
     }
-
-    .sideControl {
-        min-width: 120px;
-    }
-
-    .spinButton {
-        width: 120px;
-        height: 120px;
-
-        font-size: 24px;
-    }
-
 }
 
 
-/* =========================================
-   SMARTPHONE LANDSCAPE
-   スマホ横向き
-========================================= */
+/* =========================================================
+   PAY TABLE
+   ========================================================= */
+
+.payout {
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding: 10px 14px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(19, 35, 28, 0.9),
+            rgba(5, 12, 9, 0.95)
+        );
+
+    border: 2px solid rgba(212, 175, 55, 0.65);
+
+    border-radius: 10px;
+
+    box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+
+.payout h2 {
+    margin: 0 0 6px;
+
+    color: #d4af37;
+
+    font-family: "Cinzel", Georgia, serif;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+
+.payout p {
+    display: inline-block;
+
+    margin: 2px 8px;
+
+    color: #eee;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.payout small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #c9b978;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+   ========================================================= */
 
 @media (max-width: 700px) and (orientation: landscape) {
 
     body {
-        width: 100vw;
         height: 100vh;
+
         min-height: 100vh;
 
         overflow: hidden;
+
+        background-attachment: scroll;
     }
 
 
     .game {
-        width: 100vw;
+        width: 100%;
         height: 100vh;
+
+        margin: 0;
+
+        padding: 5px 8px;
 
         display: flex;
 
         flex-direction: column;
 
         justify-content: center;
-
         align-items: center;
 
-        padding: 3px;
+        border: none;
+
+        border-radius: 0;
+
+        background:
+            rgba(0, 0, 0, 0.45);
     }
 
 
-    /* タイトル */
+    .game h1 {
+        font-size: 22px;
 
-    h1 {
-        margin: 0 0 4px;
+        letter-spacing: 3px;
 
-        font-size: 21px;
-
-        letter-spacing: 2px;
+        margin: 0 0 5px;
     }
 
 
-    /* COINS / BET */
+    .slotArea {
+        gap: 7px;
 
-    .info {
-        margin: 0 0 4px;
-
-        gap: 5px;
+        width: 100%;
     }
 
 
-    .infoBox {
-        min-width: 80px;
+    .slotMachine {
+        width: min(79vw, 470px);
 
-        padding: 3px 8px;
+        padding: 8px;
+
+        border-width: 3px;
+
+        border-radius: 12px;
+    }
+
+
+    .reels {
+        gap: 4px;
+
+        padding: 4px;
+    }
+
+
+    .reelColumn {
+        gap: 4px;
+    }
+
+
+    .reel {
+        font-size: clamp(24px, 7vw, 42px);
 
         border-width: 1px;
 
@@ -925,171 +892,156 @@ spinButton {
     }
 
 
-    .infoTitle {
+    .sideControl {
+        gap: 5px;
+    }
+
+
+    .sideCoins {
+        width: 82px;
+
+        padding: 4px;
+
+        border-width: 2px;
+    }
+
+
+    .sideCoins span {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .sideCoins strong {
+        font-size: 20px;
+    }
+
+
+    .betControls {
+        width: 82px;
+
+        padding: 3px;
+
+        border-width: 1px;
+    }
+
+
+    .betControls button {
+        width: 21px;
+        height: 21px;
+
+        font-size: 14px;
+    }
+
+
+    .betControls div {
         font-size: 8px;
 
         letter-spacing: 1px;
     }
 
 
-    .infoValue {
-        font-size: 14px;
+    .betControls strong {
+        font-size: 16px;
     }
 
 
-    /* スロット＋SPIN */
+    #spinButton {
+        width: 82px;
+        height: 47px;
 
-    .slotArea {
-        width: 100%;
-
-        display: flex;
-
-        justify-content: center;
-
-        align-items: center;
-
-        gap: 8px;
-    }
-
-
-    /* スロット本体 */
-
-    .slotMachine {
-        width: min(82vw, 560px);
-
-        padding: 6px;
-
-        border-width: 3px;
+        border-width: 2px;
 
         border-radius: 9px;
-    }
 
+        font-size: 18px;
 
-    /* リール */
-
-    .reels {
-        gap: 3px;
-
-        padding: 4px;
-
-        border-width: 1px;
-    }
-
-
-    .reelColumn {
-        gap: 3px;
-    }
-
-
-    .reel {
-        font-size: clamp(20px, 6vw, 38px);
-
-        border-radius: 3px;
-    }
-
-
-    /* 右側コントロール */
-
-    .sideControl {
-        min-width: 70px;
-
-        gap: 6px;
-    }
-
-
-    /* BET */
-
-    .betBox {
-        padding: 4px 5px;
-
-        border-width: 1px;
-
-        border-radius: 6px;
-    }
-
-
-    .betTitle {
-        margin-bottom: 2px;
-
-        font-size: 9px;
-
-        letter-spacing: 1px;
-    }
-
-
-    .betControls {
-        gap: 3px;
-    }
-
-
-    .betControls button {
-        width: 22px;
-        height: 22px;
-
-        font-size: 14px;
-    }
-
-
-    #betControlValue {
-        min-width: 18px;
-
-        font-size: 13px;
-    }
-
-
-    /* SPIN */
-
-    .spinButton {
-        width: 68px;
-        height: 68px;
-
-        border-width: 3px;
-
-        font-size: 14px;
-
-        letter-spacing: 1px;
+        letter-spacing: 2px;
 
         box-shadow:
-
-            inset 0 3px 5px rgba(255,255,255,0.3),
-
-            inset 0 -5px 8px rgba(0,0,0,0.6),
-
-            0 4px 0 #5c4316,
-
-            0 7px 12px rgba(0,0,0,0.7);
+            0 4px 0 #450000,
+            0 6px 8px rgba(0, 0, 0, 0.75);
     }
 
 
-    /* 結果 */
+    #spinButton:active {
+        transform: translateY(4px);
 
-    #result {
-        margin-top: 4px;
+        box-shadow:
+            0 1px 0 #450000,
+            0 3px 5px rgba(0, 0, 0, 0.7);
+    }
 
-        min-height: 17px;
+
+    .result {
+        min-height: 24px;
+
+        margin: 3px 0;
 
         font-size: 12px;
+
+        letter-spacing: 1px;
     }
 
+
+    .payout {
+        margin-top: 2px;
+
+        padding: 4px 7px;
+
+        border-width: 1px;
+    }
+
+
+    .payout h2 {
+        font-size: 11px;
+
+        letter-spacing: 2px;
+
+        margin: 0 0 2px;
+    }
+
+
+    .payout p {
+        margin: 0 4px;
+
+        font-size: 8px;
+    }
+
+
+    .payout small {
+        margin-top: 2px;
+
+        font-size: 7px;
+    }
 }
-/* =========================================
-   PORTRAIT WARNING
-   スマホ縦向き → 横向きへ誘導
-========================================= */
+
+
+/* =========================================================
+   PORTRAIT MODE
+   ========================================================= */
 
 @media (max-width: 700px) and (orientation: portrait) {
 
     body {
         min-height: 100vh;
+
         overflow: hidden;
     }
+
 
     .game {
         display: none;
     }
 
+
     body::before {
-        content: "📱\A\Aスマートフォンを横向きにしてください\A\A↻ LANDSCAPE MODE";
+        content:
+            "📱\A\A"
+            "スマートフォンを横向きにしてください"
+            "\A\A"
+            "↻  LANDSCAPE MODE";
 
         white-space: pre;
 
@@ -1100,152 +1052,293 @@ spinButton {
         display: flex;
 
         justify-content: center;
-
         align-items: center;
-
-        text-align: center;
 
         padding: 30px;
 
         background:
             radial-gradient(
                 ellipse at center,
-                #123f30 0%,
-                #061811 55%,
-                #010504 100%
+                #35150f 0%,
+                #100807 55%,
+                #020202 100%
             );
 
         color: #f5d36b;
 
-        font-family:
-            Georgia,
-            "Times New Roman",
-            serif;
+        font-family: "Cinzel", Georgia, serif;
 
-        font-size: 22px;
+        font-size: 21px;
 
-        font-weight: bold;
+        font-weight: 700;
 
         line-height: 1.8;
 
         letter-spacing: 1px;
 
+        text-align: center;
+
         text-shadow:
-            0 2px 5px rgba(0,0,0,0.8),
-            0 0 12px rgba(245,211,107,0.25);
+            0 2px 5px rgba(0, 0, 0, 0.9),
+            0 0 12px rgba(245, 211, 107, 0.3);
 
         z-index: 9999;
     }
 }
-/* =========================================
-   VERY SHORT LANDSCAPE SCREEN
-   横向きで高さが特に小さい場合
-========================================= */
 
-@media (max-width: 700px)
-       and (orientation: landscape)
-       and (max-height: 430px) {
 
-    h1 {
+/* =========================================================
+   VERY SMALL LANDSCAPE
+   ========================================================= */
+
+@media (max-height: 430px) and (orientation: landscape) {
+
+    .game h1 {
         font-size: 18px;
 
-        margin-bottom: 2px;
-    }
-
-
-    .info {
-        margin-bottom: 2px;
+        margin-bottom: 3px;
     }
 
 
     .slotMachine {
-        width: min(78vw, 500px);
-
-        padding: 4px;
+        padding: 6px;
     }
 
 
-    .reels {
-        padding: 3px;
+    .result {
+        min-height: 18px;
 
-        gap: 2px;
+        margin: 1px 0;
+
+        font-size: 10px;
     }
 
 
-    .reelColumn {
-        gap: 2px;
+    .payout {
+        padding: 2px 5px;
     }
 
 
-    .reel {
-        font-size: clamp(18px, 5vw, 32px);
+    .payout h2 {
+        font-size: 9px;
     }
 
 
-    .sideControl {
-        gap: 4px;
+    .payout p {
+        font-size: 7px;
     }
 
 
-    .spinButton {
-        width: 58px;
-        height: 58px;
-
-        font-size: 12px;
+    .payout small {
+        font-size: 6px;
     }
-
-
-    .betBox {
-        padding: 3px;
-    }
-
-
-    .betTitle {
-        font-size: 8px;
-    }
-
-
-    .betControls button {
-        width: 19px;
-        height: 19px;
-
-        font-size: 12px;
-    }
-
-
-    #betControlValue {
-        font-size: 12px;
-    }
-
-
-    #result {
-        margin-top: 2px;
-
-        min-height: 14px;
-
-        font-size: 11px;
-    }
-
 }
-.gameClear {
-    font-size: 30px;
-    font-weight: bold;
-    color: #ffd700;
+/* =========================================================
+   REEL SPINNING EFFECT
+   ========================================================= */
 
-    text-shadow:
-        0 0 5px #fff,
-        0 0 15px #ffd700,
-        0 0 30px #ff9800;
+.reel.spinning {
+    animation: reelSpin 0.12s linear infinite;
 
-    animation: clearFlash 0.8s infinite alternate;
+    filter: blur(2px);
+
+    transform: translateY(0);
 }
 
-@keyframes clearFlash {
+
+@keyframes reelSpin {
+
+    0% {
+        transform: translateY(-12px);
+        filter: blur(3px);
+    }
+
+    25% {
+        transform: translateY(8px);
+        filter: blur(4px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+        filter: blur(3px);
+    }
+
+    75% {
+        transform: translateY(10px);
+        filter: blur(4px);
+    }
+
+    100% {
+        transform: translateY(-12px);
+        filter: blur(3px);
+    }
+}
+/* =========================================================
+   WINNING PAYLINE
+   ========================================================= */
+
+.paylineLayer {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    overflow: visible;
+}
+
+
+.paylineLayer .payline {
+    fill: none;
+
+    stroke: #ffd700;
+
+    stroke-width: 6;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(0 0 3px #ffffff)
+        drop-shadow(0 0 7px #ffd700)
+        drop-shadow(0 0 14px rgba(255, 180, 0, 0.8));
+
+    animation:
+        paylineGlow 0.55s ease-in-out infinite alternate;
+}
+
+
+@keyframes paylineGlow {
+
     from {
-        transform: scale(1);
+        opacity: 0.65;
+        stroke-width: 5;
     }
 
     to {
-        transform: scale(1.08);
+        opacity: 1;
+        stroke-width: 8;
+    }
+}
+/* =========================
+   当たりライン
+========================= */
+
+.slotMachine {
+    position: relative;
+}
+
+.paylineLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 9999;
+    pointer-events: none;
+
+    overflow: visible;
+}
+/* =========================
+   滑らかな当たりライン
+========================= */
+
+.slotMachine {
+    position: relative;
+}
+
+.paylineLayer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: 9999;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.paylineLayer .payline {
+    fill: none !important;
+
+    stroke: #ffd700 !important;
+    stroke-width: 7 !important;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    visibility: visible !important;
+
+    filter:
+        drop-shadow(0 0 3px #fff)
+        drop-shadow(0 0 7px #ffd700)
+        drop-shadow(0 0 15px #ff9800);
+
+    /*
+       JSが設定する値を無効化
+    */
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+
+    /*
+       滑らかに表示
+    */
+    opacity: 0;
+
+    animation:
+        paylineAppear 0.45s cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+}
+
+@keyframes paylineAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.96);
+        transform-origin: center;
+        filter:
+            drop-shadow(0 0 0 transparent);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter:
+            drop-shadow(0 0 3px #fff)
+            drop-shadow(0 0 7px #ffd700)
+            drop-shadow(0 0 15px #ff9800);
+    }
+}
+
+@keyframes paylineAppear {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.4;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.9;
     }
 }
