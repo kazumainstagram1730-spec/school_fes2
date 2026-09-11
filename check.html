@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Festival Check</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: #222;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =========================
+   小切手
+========================= */
+
+.check {
+
+  width: min(94vw, 1100px);
+
+  aspect-ratio: 2 / 1;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background: #f7f0d8;
+
+  border: 4px solid #222;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.5),
+    inset 0 0 0 6px #e1d5ae;
+
+  padding: 5%;
+
+  color: #222;
+}
+
+
+/* =========================
+   bg.jpgを透かしで配置
+========================= */
+
+.check::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image: url("bg.jpg");
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  opacity: 0.13;
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   小切手の枠
+========================= */
+
+.check::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 14px;
+
+  border: 1px solid rgba(50,50,50,0.7);
+
+  pointer-events: none;
+
+  z-index: 3;
+}
+
+
+/* =========================
+   全コンテンツを前面へ
+========================= */
+
+.check > * {
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================
+   ヘッダー
+========================= */
+
+.check-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+}
+
+.title {
+
+  font-size: clamp(20px, 4vw, 42px);
+
+  font-weight: bold;
+
+  letter-spacing: 4px;
+}
+
+.subtitle {
+
+  font-size: clamp(9px, 1.5vw, 15px);
+
+  letter-spacing: 2px;
+
+  margin-top: 4px;
+}
+
+.number {
+
+  text-align: right;
+
+  font-size: clamp(10px, 1.6vw, 16px);
+}
+
+
+/* =========================
+   支払先
+========================= */
+
+.pay-to {
+
+  margin-top: 8%;
+}
+
+.label {
+
+  font-family: Arial, sans-serif;
+
+  font-size: clamp(9px, 1.5vw, 15px);
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+}
+
+.name-line {
+
+  border-bottom: 2px solid #333;
+
+  height: 35px;
+
+  margin-top: 3px;
+}
+
+
+/* =========================
+   金額
+========================= */
+
+.amount-area {
+
+  margin-top: 5%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.yen {
+
+  font-size: clamp(24px, 5vw, 55px);
+
+  font-weight: bold;
+}
+
+.amount-input {
+
+  flex: 1;
+
+  background: transparent;
+
+  border: none;
+
+  border-bottom: 3px solid #333;
+
+  outline: none;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(25px, 5vw, 60px);
+
+  font-weight: bold;
+
+  text-align: right;
+
+  color: #222;
+}
+
+.amount-input::placeholder {
+
+  color: #999;
+}
+
+
+/* =========================
+   金額の文字
+========================= */
+
+.amount-words {
+
+  margin-top: 2%;
+
+  border-bottom: 1px solid #555;
+
+  height: 30px;
+
+  font-size: clamp(10px, 1.7vw, 18px);
+
+  font-style: italic;
+}
+
+
+/* =========================
+   フッター
+========================= */
+
+.check-footer {
+
+  position: absolute;
+
+  left: 5%;
+
+  right: 5%;
+
+  bottom: 6%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: end;
+}
+
+.signature {
+
+  font-family: "Brush Script MT", cursive;
+
+  font-size: clamp(16px, 3vw, 30px);
+}
+
+.signature-line {
+
+  border-bottom: 1px solid #333;
+
+  width: 180px;
+}
+
+.currency {
+
+  font-family: Arial, sans-serif;
+
+  font-size: clamp(8px, 1.2vw, 13px);
+
+  letter-spacing: 2px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="check">
+
+
+  <!-- ヘッダー -->
+
+  <div class="check-header">
+
+    <div>
+
+      <div class="title">
+        LOSS VEGAS CASINO
+      </div>
+
+      <div class="subtitle">
+        OFFICIAL CASINO CHECK
+      </div>
+
+    </div>
+
+
+    <div class="number">
+      No. 000001
+    </div>
+
+  </div>
+
+
+  <!-- 支払先 -->
+
+  <div class="pay-to">
+
+    <div class="label">
+      PAY TO THE ORDER OF
+    </div>
+
+    <div class="name-line"></div>
+
+  </div>
+
+
+  <!-- 金額 -->
+
+  <div class="amount-area">
+
+    <div class="yen">
+      $
+    </div>
+
+    <input
+      class="amount-input"
+      type="number"
+      inputmode="numeric"
+      placeholder="0"
+      min="0"
+    >
+
+  </div>
+
+
+  <!-- 金額説明 -->
+
+  <div class="amount-words">
+    AMOUNT IN UNITED STATES DOLLARS
+  </div>
+
+
+  <!-- フッター -->
+
+  <div class="check-footer">
+
+    <div>
+
+      <div class="currency">
+        AUTHORIZED SIGNATURE
+      </div>
+
+      <div class="signature-line"></div>
+
+      <div class="signature">
+        LOSS VEGAS CASINO
+      </div>
+
+    </div>
+
+
+    <div class="currency">
+      LOSS VEGAS CASINO
+    </div>
+
+  </div>
+
+
+</div>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const amount = params.get("amount");
+
+    if (amount !== null) {
+        document.querySelector(".amount-input").value = amount;
+    }
+</script>
+
+
+</body>
+</html>
+

@@ -923,6 +923,14 @@ function clearPaylines() {
     paylineLayer.innerHTML = "";
 }
 
+function goToResult() {
+    // COINSを5の倍数に丸める
+    const finalCoins = Math.round(coins / 5) * 5;
+
+    // 小切手へ金額を渡す
+    window.location.href =
+        "check.html?amount=" + encodeURIComponent(finalCoins);
+}
 
 // ==========================
 // 初期化

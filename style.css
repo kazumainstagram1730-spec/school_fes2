@@ -1349,7 +1349,7 @@ body {
 @media (orientation: landscape) and (max-width: 900px) {
 
     .game {
-        width: 100vw;
+        width: 200vw;
         height: 100vh;
         padding: 10px;
     }
@@ -1381,4 +1381,40 @@ body {
         font-size: 30px;
         min-height: 45px;
     }
+}
+.result-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+#go-result-button {
+  padding: 14px 40px;
+
+  background: #f7f0d8;
+  color: #222;
+
+  border: 3px solid #222;
+  border-radius: 6px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: bold;
+
+  letter-spacing: 3px;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 0 #888;
+
+  transition: 0.15s;
+}
+
+#go-result-button:hover {
+  transform: translateY(-2px);
+}
+
+#go-result-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #888;
 }
